@@ -24,6 +24,7 @@ module.exports = async function fastCDC(_filePath, options) {
     let minSize = 256
     let avgSize = 1024
     let maxSize = 4096
+    let outputDir = null
     if (typeof options === 'object') {
         if ('avg' in options) {
             avgSize = options.avg | 0
@@ -41,6 +42,13 @@ module.exports = async function fastCDC(_filePath, options) {
         } else if ('avg' in options) {
             maxSize = Math.min(MAXIMUM_MAX, Math.max(MAXIMUM_MIN, avgSize << 2))
         }
+        if ('outputDir' in options) {
+            if (typeof options.outputDir === 'string') {
+                outputDir = path.resolve(options.outputDir)
+            } else if (options.outputDir !== null && options.outputDir !== undefined) {
+                throw new Error('Invalid outputDir: must be a string or null/undefined')
+            }
+        }
         if (!('avg' in options)) {
             avgSize = Math.min(AVERAGE_MAX, Math.max(AVERAGE_MIN, (maxSize + minSize) >> 1))
         }
@@ -53,7 +61,7 @@ module.exports = async function fastCDC(_filePath, options) {
         maxSize = Math.min(MAXIMUM_MAX, Math.max(MAXIMUM_MIN, avgSize << 2))
     }
     return new Promise((resolve, reject) => {
-        getChunksRS(filePath, minSize, avgSize, maxSize, (err, result) => {
+        getChunksRS(filePath, minSize, avgSize, maxSize, outputDir, (err, result) => {
             if (err) reject(err);
             else resolve(result);
         });

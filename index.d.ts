@@ -1,7 +1,8 @@
 interface Options {
     min: number,
     avg: number,
-    max: number
+    max: number,
+    outputDir: string
 }
 
 type AvgSize = number

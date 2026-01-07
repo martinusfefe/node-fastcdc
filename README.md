@@ -35,6 +35,14 @@ const chunks = await fastCDC('test.bin', {
   max: 65536,
 })
 
+// Optionally write chunks to files (filenames are SHA256 hashes)
+const chunksWithFiles = await fastCDC('test.bin', {
+  min: 1024,
+  avg: 4096,
+  max: 65536,
+  outputDir: './chunks', // Each chunk will be written to ./chunks/{hash}
+})
+
 console.log(chunks.slice(0, 3)) // Show first 3 chunks
 ```
 
@@ -78,13 +86,14 @@ Computes a list of content defined chunk boundaries using fastcdc-rs with SHA256
   - `min` the minimum chunk size
   - `avg` the average chunk size
   - `max` the maximum chunk size
+  - `outputDir` (optional) a string path to a directory where each chunk will be written as a separate file. The filename will be the SHA256 hash of the chunk content.
 
 **Returns** A `Promise` that resolves to an array of chunk objects, each containing:
 
 - `offset`: The starting byte position of the chunk
 - `hash`: The SHA256 hash of the chunk's content as a hexadecimal string
 
-**Note**: This function is asynchronous and non-blocking, using background threads for file processing and parallel hash computation.
+**Note**: This function is asynchronous and non-blocking, using background threads for file processing and parallel hash computation. When `outputDir` is specified, chunks are written to files in parallel for optimal performance.
 
 ## License
 
