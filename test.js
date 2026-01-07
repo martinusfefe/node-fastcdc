@@ -1,7 +1,7 @@
 const fastCDC = require('./index.js')
 const fs = require('fs').promises
 
-const fileSizeMb = 1000
+const fileSizeMb = 100
 
 async function test() {
     const buffer = new Uint8Array(fileSizeMb * 1024 * 1024)
@@ -14,9 +14,9 @@ async function test() {
     const max = 2048 * 1024; // 1 MB
 
     const options = {
-        minSize: min,
-        avgSize: avg,
-        maxSize: max
+        min: min,
+        avg: avg,
+        max: max
     }
 
     // Write to a temp file
