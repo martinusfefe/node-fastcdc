@@ -18,10 +18,10 @@ This implementation provides:
 ## Example
 
 ```javascript
-const fastCDC = require('./index.js')
+import fastCDC from 'node-fastcdc'
 
 // Create a test file
-const fs = require('fs').promises
+import * as fs from 'fs/promises'
 const buffer = new Uint8Array(10 * 1024)
 for (let i = 0; i < buffer.length; ++i) {
   buffer[i] = Math.random() * 256
