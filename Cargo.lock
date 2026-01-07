@@ -85,18 +85,6 @@ checksum = "48c757948c5ede0e46177b7add2e67155f70e33c07fea8284df6576da70b3719"
 
 [[package]]
 name = "fastcdc"
-version = "1.0.0"
-dependencies = [
- "fastcdc 1.0.5",
- "hex",
- "memmap2",
- "neon",
- "rayon",
- "sha2",
-]
-
-[[package]]
-name = "fastcdc"
 version = "1.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5afa29be46b12c8c380b997def8d1ac77c2665da93eb0a768fab0bf4db79333f"
@@ -181,6 +169,18 @@ dependencies = [
  "cfg-if",
  "libloading",
  "smallvec",
+]
+
+[[package]]
+name = "node-fastcdc"
+version = "1.0.0"
+dependencies = [
+ "fastcdc",
+ "hex",
+ "memmap2",
+ "neon",
+ "rayon",
+ "sha2",
 ]
 
 [[package]]

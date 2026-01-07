@@ -1,5 +1,5 @@
 [package]
-name = "fastcdc"
+name = "node-fastcdc"
 version = "1.0.0"
 description = "NodeJS bindings for rust-fastcdc"
 authors = ["Martin Repka"]
