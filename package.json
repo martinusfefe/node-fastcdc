@@ -1,0 +1,30 @@
+{
+  "name": "@martinusfefe/fastcdc",
+  "version": "1.0.1",
+  "description": "NodeJS bindings for fastcdc-rs",
+  "exports": {
+    "default": "./index.js",
+    "types": "./index.d.ts"
+  },
+  "scripts": {
+    "build": "cargo-cp-artifact -nc index.node -- cargo build --message-format=json-render-diagnostics",
+    "build-debug": "npm run build --",
+    "build-release": "npm run build -- --release",
+    "install": "npm run build-release",
+    "test": "cargo test"
+  },
+  "repository": "git@github.com:martinusfefe/node-fastcdc.git",
+  "author": "Martin Repka",
+  "license": "ISC",
+  "dependencies": {
+    "cargo-cp-artifact": "^0.1"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "fastcdc",
+    "content",
+    "defined",
+    "chunking",
+    "compression"
+  ]
+}
