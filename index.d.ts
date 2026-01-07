@@ -12,7 +12,7 @@ interface Result {
     hash: string,
 }
 
-export default async function fastCDC(
+export default function fastCDC(
     filePath: string,
     options?: AvgSize | Partial<Options>
-): Promise<>
+): Promise<Result[]>

@@ -1,6 +1,6 @@
 {
   "name": "node-fastcdc",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "NodeJS bindings for fastcdc-rs package with SHA256 hash computation.",
   "exports": {
     "default": "./index.js",
