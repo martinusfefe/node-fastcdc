@@ -16,13 +16,17 @@ fn compute_results_parallel(
     max: usize,
     target_dir: Option<&str>,
 ) -> Result<Vec<(usize, String)>, std::io::Error> {
+    // Create target directory if specified
+    if let Some(dir) = target_dir {
+        fs::create_dir_all(dir)?;
+    }
+
     if bytes.len() < min {
         let mut hasher = Sha256::new();
         hasher.update(bytes);
         let hash = encode(hasher.finalize());
 
         if let Some(dir) = target_dir {
-            fs::create_dir_all(dir)?;
             let file_path = Path::new(dir).join(&hash);
             let mut file = File::create(file_path)?;
             file.write_all(bytes)?;

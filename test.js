@@ -88,7 +88,7 @@ async function main() {
         console.error('Test failed:', error)
     }
     await fs.unlink("./test.bin")
-    await fs.rm("./.chunks", {recursive: true, force: true})
+    // await fs.rm("./.chunks", {recursive: true, force: true})
 }
 
 main()
